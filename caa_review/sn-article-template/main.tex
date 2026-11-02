@@ -1,0 +1,908 @@
+%Version 3.1 December 2024
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%=========================================================================================%%
+%% the documentclass is set to pdflatex as default. You can delete it if not appropriate.  %%
+%%=========================================================================================%%
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-chicago.bst%  
+ 
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver-num]{sn-jnl}% Vancouver Numbered Reference Style
+%%\documentclass[pdflatex,sn-vancouver-ay]{sn-jnl}% Vancouver Author Year Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Article Title]{Article Title}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1]{\fnm{Lalith} \sur{Gunnu}}\email{lalithgunnu2202@gmail.com}
+
+\author[2]{\fnm{Kaustab} \sur{Karmakar}}
+
+\affil*[1]{\orgdiv{Department of Electronics and Instrumentation Engineering}, \orgname{National Institute of Technology Silchar}, \orgaddress{\city{Silchar}, \state{Assam}, \country{India}}}
+
+\affil[2]{\orgdiv{Department of Computer Science and Engineering}, \orgname{National Institute of Technology Silchar}, \orgaddress{\city{Silchar}, \state{Assam}, \country{India}}}
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{The growing demand for immersive and interactive digital environments has increased the need for systems capable of generating contextually appropriate audio from visual information. This review examines multimodal representation learning approaches, focusing on CLIP, AudioCLIP, and Contrastive Language-Audio Pretraining (CLAP), to investigate the foundations of semantic alignment across visual, textual, and audio modalities. It analyzes their architectures, modality-specific encoders, shared embedding spaces, contrastive learning objectives, and training strategies. The comparative findings highlight the effectiveness of contrastive learning in establishing semantic relationships between heterogeneous modalities. However, existing approaches primarily focus on representation learning and cross-modal retrieval rather than direct audio generation conditioned on visual scenes. This reveals a research gap between learning visual-audio associations and synthesizing acoustically appropriate audio from images. The review identifies the potential for integrating visual scene understanding, multimodal semantic alignment, and conditional audio synthesis into a unified framework. Such an approach could support context-aware audio generation for applications in interactive gaming, virtual environments, and immersive simulations, reducing reliance on manually designed audio assets.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{multimodal ai, audio generation, image audio relationship}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Introduction}\label{sec1}
+
+Recent advances in artificial intelligence have enabled the development of models capable of processing and establishing relationships between different data modalities, including images, text, and audio. This area, commonly referred to as multimodal learning, aims to develop systems that can understand and associate information across heterogeneous data sources. Unlike conventional approaches that process each modality independently, multimodal models learn shared representations that capture semantic relationships between different forms of information. Such capabilities have created opportunities for applications in image understanding, audio recognition, cross-modal retrieval, and generative artificial intelligence.
+
+One emerging application of multimodal learning is context-aware audio generation from visual information. In conventional interactive environments, particularly video games and virtual simulations, audio effects are generally predefined and manually associated with specific objects, actions, or environmental conditions. This approach can limit the flexibility and realism of dynamic environments, as the audio output depends on previously designed sound assets. An alternative approach is to develop systems that interpret the visual context of an image and generate corresponding audio automatically. For instance, an image depicting a railway station could provide contextual information about trains, announcements, passenger activity, and surrounding environmental sounds. A system capable of understanding these visual elements and translating them into acoustically appropriate output could enable more adaptive and immersive digital experiences.
+
+Developing such a system requires an understanding of how different modalities can be represented and aligned within a common semantic space. In particular, it is necessary to investigate how visual and audio features are extracted, how their representations are projected into a shared embedding space, and how neural networks are trained to establish meaningful cross-modal relationships. Contrastive learning has emerged as an effective approach for this purpose. Models such as Contrastive Language--Image Pre-training (CLIP), AudioCLIP, and Contrastive Language--Audio Pretraining (CLAP) demonstrate different approaches to learning semantic associations across visual, textual, and audio modalities. CLIP establishes image--text alignment, AudioCLIP extends multimodal representation learning to include audio, while CLAP focuses on aligning audio and natural language representations.
+
+Although these models provide important foundations for multimodal understanding, their architectures, training objectives, and limitations differ according to the modalities and datasets involved. Furthermore, learning semantic associations between visual and audio representations does not directly address the generation of audio conditioned on visual scenes. Understanding these existing approaches is therefore essential for identifying the architectural requirements and research gaps involved in developing an image-conditioned audio generation system.
+
+To investigate these aspects, this review focuses on the following research questions:
+
+\begin{enumerate}
+    \item \textbf{RQ1: How is a shared audio--visual multimodal space constructed?}
+    \item \textbf{RQ2: What training objectives and neural network architectures are employed for multimodal representation learning?}
+    \item \textbf{RQ3: What are the major challenges and limitations associated with existing multimodal architectures and models?}
+\end{enumerate}
+
+By addressing these questions through a comparative analysis of CLIP, AudioCLIP, and CLAP, this review aims to identify the common architectural principles, training strategies, and limitations of existing multimodal representation learning approaches. The findings are intended to provide a foundation for exploring systems that integrate visual scene understanding, cross-modal semantic alignment, and conditional audio synthesis. Such systems could contribute to the development of context-aware audio generation applications in interactive gaming, virtual environments, and other immersive digital experiences.
+``` 
+
+\section{Results and Findings}\label{sec7}
+
+The findings of this review establish that shared multimodal embedding spaces can be constructed by extracting modality-specific features and projecting them into a common representation space using contrastive learning. CLIP demonstrates visual--textual alignment, AudioCLIP extends this approach to image, text, and audio modalities, while CLAP establishes semantic relationships between audio and natural language. These findings address RQ1 and demonstrate that contrastive representation learning provides a foundation for establishing semantic relationships between visual and acoustic information.
+
+Regarding RQ2, the comparative analysis identifies modality-specific neural network encoders, learnable projection layers, and symmetric contrastive objectives as the fundamental components of the investigated frameworks. Different architectures, including ResNet, Vision Transformer, ESResNeXt, CNN14, and BERT, are employed for feature extraction depending on the input modality. The findings indicate that architectural selection, training strategy, and the quality of paired multimodal data collectively influence the effectiveness of representation alignment.
+
+For RQ3, the investigation identifies several common limitations, including computational requirements, limited availability of high-quality multimodal datasets, noisy cross-modal supervision, domain-specific generalization, and sensitivity to training configurations. Furthermore, the reviewed models primarily focus on semantic representation alignment rather than direct conditional audio synthesis. This highlights an important gap between learning visual--audio associations and generating acoustically appropriate audio directly from visual inputs.
+
+Overall, the findings suggest that an image-conditioned audio generation system requires the integration of visual scene understanding, cross-modal semantic alignment, and conditional audio synthesis. The reviewed frameworks provide important architectural and methodological foundations for such a system; however, an additional generative component is necessary to transform visual context into meaningful audio signals. This establishes a potential research direction for developing context-aware audio generation systems for interactive gaming, virtual environments, and immersive simulations.
+
+
+
+\section{Research Questions}\label{sec3}
+
+\subsection{Construction of Shared Multimodal Embedding Space}\label{subsec3.1}
+
+The construction of a shared multimodal embedding space is a fundamental requirement for enabling cross-modal representation learning, where information from different modalities is mapped into a common feature space. The primary objective is to establish semantic correspondence between modality-specific representations, allowing features originating from different modalities to be compared directly. Across CLIP, AudioCLIP, and CLAP, this is achieved through modality-specific neural network encoders, learnable linear projection layers, and contrastive learning objectives. Although these approaches differ in the number and nature of the modalities involved, they share a common principle: representations of semantically corresponding inputs are brought closer in the embedding space, while representations of non-corresponding inputs are pushed apart.
+
+\subsubsection{Modality-Specific Encoders and Feature Projection}
+
+The initial stage in constructing a shared embedding space involves extracting meaningful representations from each input modality using dedicated neural network encoders. In CLIP, Radford et al. employ a dual-encoder architecture consisting of a vision encoder and a Transformer-based text encoder. The visual encoder utilizes either a modified ResNet with attention pooling or a Vision Transformer (ViT), while the text encoder processes byte-pair encoded textual sequences using a Transformer architecture. The resulting feature representations are subsequently mapped through learnable linear projection layers into a common 1024-dimensional embedding space. This projection enables image and text representations to be expressed in a unified vector space despite originating from different encoder architectures.
+
+Extending this framework to three modalities, AudioCLIP incorporates a dedicated audio encoder alongside the pre-existing CLIP image and text encoders. The audio branch employs an ESResNeXt-50 architecture with trainable B-spline wavelet-based time-frequency transformations to extract acoustic representations. Its classification layer is replaced with a linear projection layer that maps the extracted audio features into the same 1024-dimensional embedding space used by the image and text encoders. Consequently, visual, textual, and acoustic representations become directly comparable within a common multimodal space.
+
+Similarly, CLAP adopts a dual-encoder architecture specifically designed for audio-text representation learning. It combines a CNN14-based audio encoder, which processes log-Mel spectrogram representations, with a BERT-base text encoder that extracts semantic representations from natural language descriptions using the [CLS] token embedding. The resulting audio and textual features are independently transformed using learnable projection matrices, mapping both representations into a shared 1024-dimensional embedding space. Unlike AudioCLIP, which extends an existing image-text alignment framework, CLAP directly establishes correspondence between acoustic signals and natural language descriptions.
+
+\subsubsection{Contrastive Learning for Cross-Modal Alignment}
+
+Following feature extraction and projection, contrastive learning is employed to establish semantic alignment between the representations of different modalities. In CLIP, this is achieved by constructing an $N \times N$ similarity matrix for a batch containing $N$ matched image-text pairs. Each element represents the cosine similarity between an image embedding and a text embedding. A symmetric cross-entropy objective is then applied across both image-to-text and text-to-image directions. The objective maximizes the similarity of corresponding image-text pairs, represented by the diagonal elements of the similarity matrix, while minimizing the similarity of non-matching pairs represented by the off-diagonal elements. A learnable temperature parameter is used to scale the similarity logits, controlling the sharpness of the resulting probability distribution.
+
+AudioCLIP extends this contrastive alignment mechanism to a tri-modal setting by introducing additional cross-modal objectives. In addition to the original image-text alignment objective, it incorporates text-audio and image-audio contrastive learning objectives. This enables the model to establish correspondence across all three modalities rather than restricting alignment to a single modality pair. AudioSet provides the multimodal training associations by connecting audio recordings with corresponding video frames and textual class labels. Its training strategy involves standalone pre-training of the audio encoder, cooperative pre-training using the pre-trained image and text encoders as fixed reference representations, and subsequent joint optimization of the three modality-specific branches. This progressive training procedure facilitates the integration of acoustic representations into the existing visual-textual embedding space.
+
+In CLAP, cross-modal alignment is established directly between audio and text embeddings using a pairwise similarity matrix. For a batch of $N$ matched audio-text pairs, the similarity matrix is computed using the projected audio and text representations, with a learnable temperature parameter scaling the similarity scores. Similar to CLIP, a symmetric cross-entropy loss is applied in both audio-to-text and text-to-audio directions. This objective encourages corresponding audio recordings and textual descriptions to occupy nearby positions in the embedding space while distinguishing them from unrelated pairs. An important distinction is the use of natural language supervision derived from audio-captioning datasets, including AudioCaps, ClothoV2, FSD50K, and MACS. This provides richer semantic supervision than approaches relying exclusively on predefined class labels.
+
+\subsubsection{Comparative Analysis of Shared Embedding Construction}
+
+The three approaches demonstrate a progressive extension of contrastive multimodal representation learning. CLIP establishes the foundational image-text alignment framework through modality-specific encoders, linear feature projections, and symmetric contrastive optimization. AudioCLIP extends this framework by incorporating an additional acoustic encoder and introducing cross-modal objectives that connect audio with both visual and textual representations. In contrast, CLAP adopts a dedicated audio-text architecture that focuses on aligning acoustic information directly with natural language descriptions.
+
+Despite these architectural differences, all three approaches rely on a common embedding dimensionality, learnable projection layers, and similarity-based contrastive objectives to establish cross-modal correspondence. However, their training supervision and alignment strategies differ according to the modalities being integrated. CLIP relies on large-scale image-text associations, AudioCLIP utilizes audio-visual-textual associations to connect three modalities, whereas CLAP leverages audio-caption pairs to establish direct semantic correspondence between sound and language. These approaches collectively demonstrate how contrastive learning provides a scalable mechanism for constructing shared multimodal embedding spaces, forming the foundation for subsequent cross-modal retrieval, recognition, and multimodal understanding tasks.
+```latex
+\section{Architectural Frameworks and Training Strategies}\label{sec5}
+
+This section examines the architectural configurations and training strategies adopted by CLIP, AudioCLIP, and CLAP. Although all three frameworks employ contrastive pre-training to establish shared multimodal embedding spaces, they differ in their encoder architectures, feature extraction mechanisms, modality integration strategies, and training procedures.
+
+\subsection{CLIP: Visual--Textual Representation Learning}
+
+\subsubsection{Encoder Architectures}
+
+CLIP employs two independent neural network encoders to extract visual and textual representations. The image encoder evaluates two primary architectural families: Modified ResNet and Vision Transformer (ViT).
+
+The Modified ResNet family includes ResNet-50, ResNet-101, and scaled variants such as RN50x4, RN50x16, and RN50x64. These architectures incorporate ResNet-D modifications and anti-aliased blur pooling to improve feature extraction. Additionally, the conventional global average pooling operation is replaced with a multi-head attention pooling mechanism based on query, key, and value (QKV) representations.
+
+The Vision Transformer family comprises ViT-B/32, ViT-B/16, ViT-L/14, and ViT-L/14@336px. These architectures process images as sequences of patches using transformer-based self-attention. An additional layer normalization operation is applied before the transformer to facilitate stable representation learning.
+
+For textual representation, CLIP employs a Transformer-based language encoder. Its base configuration consists of 12 transformer layers, a hidden representation width of 512, and 8 attention heads. Input text is converted into lowercase byte-pair encoding (BPE) tokens using a vocabulary of 49,408 tokens, with a maximum sequence length of 76 tokens. The representation corresponding to the end-of-sequence ([EOS]) token is layer-normalized and subsequently projected into the shared multimodal embedding space.
+
+Both image and text encoders employ learnable linear projection layers to transform their respective feature representations into a common embedding dimension, enabling direct cross-modal similarity computation.
+
+\subsubsection{Contrastive Pre-training Strategy}
+
+CLIP is trained using a contrastive learning objective based on symmetric cross-entropy, commonly associated with InfoNCE and multi-class N-pair learning. Given a minibatch of $N$ image--text pairs, the model computes an $N \times N$ similarity matrix and identifies the corresponding image--text pairs among all possible combinations.
+
+The diagonal elements of the similarity matrix represent positive image--text associations, whereas the off-diagonal elements represent negative associations. A learnable temperature parameter controls the scaling of similarity logits. The temperature is initialized to $0.07$, and the resulting logit scaling factor is constrained to a maximum value of $100$.
+
+The training objective minimizes the average of the image-to-text and text-to-image cross-entropy losses, encouraging the model to establish semantically aligned visual and textual representations within the shared embedding space.
+
+\subsection{AudioCLIP: Tri-Modal Representation Learning}
+
+\subsubsection{Encoder Architectures}
+
+AudioCLIP extends the original CLIP architecture by incorporating an additional audio processing branch, thereby enabling joint representation learning across image, text, and audio modalities.
+
+The image and text encoders are initialized using the pre-trained CLIP architecture. Specifically, the image branch employs a ResNet-50 backbone equipped with QKV attention pooling, while the textual branch retains the pre-trained Transformer-based language encoder.
+
+For audio representation, AudioCLIP integrates ESResNeXt-50, a convolutional neural network architecture containing approximately 30 million parameters. Unlike conventional audio classification networks, ESResNeXt incorporates a trainable time-frequency transformation based on complex frequency B-spline wavelets. This transformation enables the extraction of discriminative acoustic representations from input audio signals.
+
+The original classification layer of ESResNeXt is replaced with a learnable linear projection layer that maps audio representations into the same 1024-dimensional embedding space used by the image and text branches. This architectural modification enables direct similarity computation across all three modalities.
+
+\subsubsection{Multi-Stage Training Strategy}
+
+AudioCLIP adopts a multi-stage training procedure to integrate the audio encoder with the pre-trained visual--textual representation space.
+
+\begin{enumerate}
+    \item \textbf{Standalone Audio Pre-training:}
+    The ESResNeXt audio encoder is initially pre-trained on the AudioSet dataset to learn general-purpose acoustic representations. This stage establishes the audio encoder's ability to extract meaningful features from diverse sound categories.
+
+    \item \textbf{Cooperative Pre-training:}
+    The pre-trained audio encoder is integrated with the existing CLIP image and text branches. During this stage, the image and text encoders remain frozen and act as teacher networks, while the audio branch is optimized to align its representations with the established visual--textual embedding space. This procedure facilitates cross-modal knowledge transfer into the audio representation space.
+
+    \item \textbf{Full Model Fine-tuning:}
+    Following cooperative pre-training, all three modality-specific encoders are jointly optimized using audio clips, corresponding video frames, and associated class names from AudioSet. This stage enables the model to refine inter-modal relationships and establish a unified tri-modal representation space.
+\end{enumerate}
+
+The training objective combines three pairwise contrastive losses corresponding to image--text, text--audio, and image--audio associations. Consequently, AudioCLIP extends the original bidirectional alignment mechanism of CLIP into a tri-modal learning framework.
+
+\subsection{CLAP: Language--Audio Representation Learning}
+
+\subsubsection{Encoder Architectures}
+
+CLAP employs separate audio and textual encoders to establish a shared language--audio representation space. Unlike AudioCLIP, which extends an existing visual--textual framework, CLAP is specifically designed to learn semantic correspondences between natural language descriptions and acoustic representations.
+
+The audio encoder utilizes CNN14, a convolutional neural network architecture derived from the PANNs framework, containing approximately 80.8 million parameters. Input audio is represented using log-Mel spectrograms generated at a sampling rate of 44.1 kHz, with 64 Mel frequency bins, a hop size of 320 samples, and a window size of 1024 samples. The CNN14 architecture extracts 2048-dimensional audio feature representations.
+
+For textual feature extraction, CLAP employs BERT-base uncased, consisting of approximately 110 million parameters. The contextual representation corresponding to the [CLS] token from the final transformer layer is extracted as the textual feature vector, producing a 768-dimensional representation. The input text is processed using a maximum character length of 100.
+
+The audio and text representations are subsequently transformed into a shared 1024-dimensional embedding space through two independent learnable linear projection matrices, denoted by $L_a$ and $L_t$, respectively. This projection mechanism enables the computation of cross-modal similarity between acoustic and textual representations.
+
+\subsubsection{Contrastive Pre-training Strategy}
+
+CLAP adopts a symmetric contrastive cross-entropy objective to align corresponding audio and text representations. For a minibatch containing $N$ audio--text pairs, pairwise cosine similarities are computed to construct an $N \times N$ similarity matrix.
+
+The similarity logits are scaled using a learnable temperature parameter, with an initial value reported as $0.007$ in the considered configuration. The scaling factor is constrained to maintain numerical stability during optimization.
+
+Unlike classification-based approaches that require predefined acoustic categories, CLAP employs natural language supervision to learn semantic relationships directly from audio-caption pairs. Its contrastive objective minimizes both text-to-audio and audio-to-text cross-entropy losses, enabling bidirectional alignment between the two modalities.
+
+\subsubsection{Training Configuration and Dataset Composition}
+
+Both the audio and text encoders are jointly optimized during contrastive pre-training. The training configuration considered here utilizes approximately 128,010 audio--text pairs collected from four audio captioning datasets: FSD50K, ClothoV2, AudioCaps, and MACS.
+
+The combination of these datasets provides diverse acoustic environments and natural language descriptions, allowing the model to learn semantic associations across different sound categories and descriptive expressions.
+
+Through joint optimization of the two encoders, CLAP establishes a shared representation space that supports cross-modal retrieval and zero-shot audio classification without requiring task-specific classifier training.
+
+\subsection{Comparative Architectural Analysis}
+
+The three frameworks exhibit distinct architectural and training characteristics despite sharing a contrastive learning foundation. CLIP establishes visual--textual alignment through independently encoded image and language representations. AudioCLIP extends this mechanism by incorporating an audio encoder and introducing pairwise alignment across three modalities. In contrast, CLAP focuses exclusively on audio--language alignment through dedicated acoustic and textual encoders trained using natural language supervision.
+
+Their architectural configurations and training strategies demonstrate different approaches to multimodal representation learning, particularly in terms of modality integration, encoder initialization, and the utilization of pre-trained representations.
+```
+
+\section{Mathematical Formulation of Contrastive Multimodal Models}\label{sec4}
+
+This section presents the mathematical formulations of three representative contrastive multimodal learning frameworks: Contrastive Language--Image Pre-training (CLIP), AudioCLIP, and Contrastive Language--Audio Pre-training (CLAP). These frameworks learn shared embedding spaces by maximizing the similarity between corresponding multimodal representations while minimizing the similarity between non-corresponding samples. Their respective feature extraction mechanisms, projection operations, similarity computations, and optimization objectives are described below.
+
+\subsection{CLIP: Contrastive Language--Image Pre-training}
+
+\subsubsection{Feature Extraction and Multimodal Projection}
+
+Given a minibatch of $N$ paired images and text descriptions, denoted by $\{(I_i,T_i)\}_{i=1}^{N}$, CLIP employs separate image and text encoders to extract their respective feature representations. The extracted features are expressed as
+
+\begin{align}
+I_f &= f_{\mathrm{image}}(I) \in \mathbb{R}^{N \times d_i}, \\
+T_f &= f_{\mathrm{text}}(T) \in \mathbb{R}^{N \times d_t}.
+\end{align}
+
+The image and text representations are subsequently projected into a common multimodal embedding space of dimension $d_e$ using learnable linear projection matrices $W_i$ and $W_t$, respectively. The resulting embeddings are normalized to unit length:
+
+\begin{align}
+I_e &= \operatorname{normalize}(I_f W_i)
+\in \mathbb{R}^{N \times d_e}, \\
+T_e &= \operatorname{normalize}(T_f W_t)
+\in \mathbb{R}^{N \times d_e}.
+\end{align}
+
+Here, $W_i \in \mathbb{R}^{d_i \times d_e}$ and $W_t \in \mathbb{R}^{d_t \times d_e}$ are learnable projection matrices. The normalization operation ensures that the resulting embeddings have unit $L_2$ norm, enabling cosine similarity to be computed through their dot product.
+
+\subsubsection{Similarity Computation and Temperature Scaling}
+
+CLIP computes pairwise similarities between all image and text embeddings within a minibatch, producing a similarity logit matrix $S \in \mathbb{R}^{N \times N}$. Each element represents the scaled cosine similarity between an image embedding and a text embedding:
+
+\begin{equation}
+S_{ij} = \frac{I_{e,i} \cdot T_{e,j}^{T}}{\tau}
+= \exp(t)(I_{e,i} \cdot T_{e,j}^{T}),
+\label{eq:clip_similarity}
+\end{equation}
+
+where $\tau$ denotes the learnable temperature parameter and $t=\log(1/\tau)$ is its logarithmic representation. The temperature is initialized to $0.07$, and the exponential logit scale is constrained to a maximum value of $100$ during optimization to maintain numerical stability.
+
+\subsubsection{Contrastive Loss Function}
+
+CLIP employs a symmetric contrastive learning objective based on cross-entropy loss. For a minibatch of $N$ image--text pairs, the diagonal elements of the similarity matrix represent the corresponding positive pairs, whereas the off-diagonal elements represent negative pairs.
+
+The image-to-text contrastive loss is defined as
+
+\begin{equation}
+\mathcal{L}_{I \rightarrow T}
+=
+-\frac{1}{N}
+\sum_{i=1}^{N}
+\log
+\frac{\exp(S_{ii})}
+{\sum_{j=1}^{N}\exp(S_{ij})}.
+\label{eq:clip_i2t}
+\end{equation}
+
+Similarly, the text-to-image contrastive loss is expressed as
+
+\begin{equation}
+\mathcal{L}_{T \rightarrow I}
+=
+-\frac{1}{N}
+\sum_{j=1}^{N}
+\log
+\frac{\exp(S_{jj})}
+{\sum_{i=1}^{N}\exp(S_{ij})}.
+\label{eq:clip_t2i}
+\end{equation}
+
+The overall CLIP objective is obtained by averaging the two directional losses:
+
+\begin{equation}
+\mathcal{L}_{\mathrm{CLIP}}
+=
+\frac{1}{2}
+\left(
+\mathcal{L}_{I \rightarrow T}
++
+\mathcal{L}_{T \rightarrow I}
+\right).
+\label{eq:clip_total}
+\end{equation}
+
+This symmetric objective encourages corresponding image and text representations to occupy nearby positions in the shared embedding space while separating unrelated pairs.
+
+\subsection{AudioCLIP: Tri-Modal Contrastive Learning}
+
+\subsubsection{Feature Representation and Audio Projection}
+
+AudioCLIP extends the CLIP framework by incorporating an additional audio encoder, enabling joint representation learning across image, text, and audio modalities. While the image and text branches retain the original CLIP encoders, the audio branch employs an ESResNeXt architecture to extract acoustic representations.
+
+For an input audio minibatch $A$, the audio encoder generates feature representations that are projected into the shared multimodal embedding space:
+
+\begin{equation}
+A_e =
+\operatorname{normalize}
+\left(f_{\mathrm{audio}}(A)W_a\right)
+\in \mathbb{R}^{N \times d_e},
+\label{eq:audioclip_audio}
+\end{equation}
+
+where $W_a$ denotes the learnable audio projection matrix. The resulting audio embeddings are normalized to maintain compatibility with the image and text representations in the common embedding space.
+
+\subsubsection{Pairwise Similarity Matrices}
+
+With three modality-specific embedding representations, AudioCLIP computes pairwise similarity matrices for all possible modality combinations. These matrices are defined as
+
+\begin{align}
+S^{(I,T)} &= I_e T_e^T \exp(t), \\
+S^{(T,A)} &= T_e A_e^T \exp(t), \\
+S^{(I,A)} &= I_e A_e^T \exp(t).
+\label{eq:audioclip_similarity}
+\end{align}
+
+Each matrix captures the pairwise semantic correspondence between two modalities. The diagonal elements represent matching samples, while the remaining elements represent non-matching combinations within the minibatch.
+
+\subsubsection{Tri-Modal Contrastive Objective}
+
+AudioCLIP extends the symmetric contrastive objective of CLIP by incorporating the losses associated with all three modality pairs. For any two modalities $M_1$ and $M_2$, the corresponding symmetric contrastive loss is defined as
+
+\begin{align}
+\mathcal{L}_{(M_1,M_2)}
+=
+\frac{1}{2}
+\Bigg[
+&-\frac{1}{N}
+\sum_{i=1}^{N}
+\log
+\frac{\exp(S_{ii}^{(M_1,M_2)})}
+{\sum_{j=1}^{N}\exp(S_{ij}^{(M_1,M_2)})}
+\nonumber\\
+&-\frac{1}{N}
+\sum_{j=1}^{N}
+\log
+\frac{\exp(S_{jj}^{(M_1,M_2)})}
+{\sum_{i=1}^{N}\exp(S_{ij}^{(M_1,M_2)})}
+\Bigg].
+\label{eq:audioclip_pair_loss}
+\end{align}
+
+The overall tri-modal contrastive objective is then expressed as
+
+\begin{equation}
+\begin{aligned}
+\mathcal{L}_{\mathrm{AudioCLIP}}
+={}&
+\mathcal{L}_{(I,T)}
++
+\mathcal{L}_{(T,A)}
++
+\mathcal{L}_{(I,A)}.
+\end{aligned}
+\label{eq:audioclip_total}
+\end{equation}
+
+The formulation enables the model to learn cross-modal correspondences not only between image and text, but also between audio and the other two modalities. During cooperative pre-training, the pretrained image and text branches act as teacher representations while the audio branch is optimized. In subsequent full-model training, the participating modality encoders can be jointly optimized.
+
+\subsection{CLAP: Contrastive Language--Audio Pre-training}
+
+\subsubsection{Audio and Text Feature Extraction}
+
+CLAP learns a shared embedding space for audio and natural language representations through separate audio and text encoders. Given a minibatch of $N$ paired audio and text samples, denoted by $\{(X_{a,i},X_{t,i})\}_{i=1}^{N}$, the respective feature representations are obtained as
+
+\begin{align}
+\hat{X}_a &= f_a(X_a)
+\in \mathbb{R}^{N \times V}, \\
+\hat{X}_t &= f_t(X_t)
+\in \mathbb{R}^{N \times U}.
+\end{align}
+
+The audio encoder employs a CNN-based architecture, such as CNN14, operating on log-Mel spectrogram representations, whereas the text encoder utilizes a transformer-based language model such as BERT. The extracted features are subsequently mapped into a common embedding space of dimension $d$ through learnable projection functions:
+
+\begin{align}
+E_a &= L_a(\hat{X}_a)
+\in \mathbb{R}^{N \times d}, \\
+E_t &= L_t(\hat{X}_t)
+\in \mathbb{R}^{N \times d}.
+\end{align}
+
+Here, $L_a$ and $L_t$ represent the learnable audio and text projection functions, respectively. The projected embeddings are normalized before similarity computation.
+
+\subsubsection{Scaled Similarity Computation}
+
+CLAP computes the pairwise similarity between audio and text embeddings to construct a similarity matrix $C \in \mathbb{R}^{N \times N}$. The scaled similarity is defined as
+
+\begin{equation}
+C = \frac{E_t E_a^T}{\tau}
+= \exp(t)(E_t E_a^T),
+\label{eq:clap_similarity}
+\end{equation}
+
+where $\tau$ represents the learnable temperature parameter and $t=\log(1/\tau)$. The inverse temperature controls the sharpness of the similarity distribution. The logit scaling operation is constrained to prevent excessively large similarity values during training.
+
+\subsubsection{Symmetric Contrastive Loss}
+
+CLAP adopts a symmetric cross-entropy objective to align corresponding audio and text representations. The text-to-audio contrastive loss is defined as
+
+\begin{equation}
+\ell_{T \rightarrow A}(C)
+=
+-\frac{1}{N}
+\sum_{i=1}^{N}
+\log
+\frac{\exp(C_{ii})}
+{\sum_{j=1}^{N}\exp(C_{ij})}.
+\label{eq:clap_t2a}
+\end{equation}
+
+Similarly, the audio-to-text contrastive loss is expressed as
+
+\begin{equation}
+\ell_{A \rightarrow T}(C)
+=
+-\frac{1}{N}
+\sum_{j=1}^{N}
+\log
+\frac{\exp(C_{jj})}
+{\sum_{i=1}^{N}\exp(C_{ij})}.
+\label{eq:clap_a2t}
+\end{equation}
+
+The overall CLAP training objective is obtained by averaging the two directional losses:
+
+\begin{equation}
+\mathcal{L}_{\mathrm{CLAP}}
+=
+\frac{1}{2}
+\left[
+\ell_{T \rightarrow A}(C)
++
+\ell_{A \rightarrow T}(C)
+\right].
+\label{eq:clap_total}
+\end{equation}
+
+This objective promotes the alignment of semantically corresponding audio and text embeddings while distinguishing them from non-corresponding samples.
+
+\subsubsection{Zero-Shot Classification}
+
+During zero-shot evaluation, CLAP compares the embedding of an input audio sample against the text embeddings of a predefined set of $K$ candidate class descriptions. Let $C^{*} \in \mathbb{R}^{M \times K}$ denote the resulting scaled similarity matrix for $M$ test audio samples and $K$ candidate text prompts.
+
+For single-label classification, the predicted class probabilities are obtained through the softmax function:
+
+\begin{equation}
+\hat{y}_{i,k}
+=
+\frac{\exp(C^{*}_{i,k})}
+{\sum_{j=1}^{K}\exp(C^{*}_{i,j})}.
+\label{eq:clap_softmax}
+\end{equation}
+
+The predicted class is subsequently determined by selecting the class with the highest probability:
+
+\begin{equation}
+\hat{c}_i
+=
+\underset{k \in \{1,\ldots,K\}}{\operatorname{argmax}}
+\ \hat{y}_{i,k}.
+\label{eq:clap_prediction}
+\end{equation}
+
+For multi-label classification, where multiple acoustic events may coexist within a single audio sample, the sigmoid function is applied independently to each class similarity score:
+
+\begin{equation}
+\hat{y}_{i,k}
+=
+\sigma(C^{*}_{i,k})
+=
+\frac{1}{1+\exp(-C^{*}_{i,k})}.
+\label{eq:clap_sigmoid}
+\end{equation}
+
+Unlike softmax, sigmoid does not impose a sum-to-one constraint across class probabilities, allowing multiple classes to be predicted simultaneously. A predefined decision threshold can subsequently be applied to determine the presence or absence of individual acoustic categories.
+
+```latex
+\section{Synthesis of Research Questions}\label{sec5}
+
+The primary motivation of this review is to investigate the methodologies and underlying architectures required to develop a system capable of establishing meaningful relationships between the visual context of an image and its corresponding audio modality. The proposed application aims to generate contextually appropriate audio directly from an input image by identifying the objects, activities, and environmental characteristics represented within the visual scene.
+
+Such a system has considerable potential in applications involving next-generation video games, virtual environments, and immersive simulations, where audio generation could be dynamically driven by visual content rather than relying on manually designed or hardcoded sound effects. By automatically generating audio according to the visual context of a scene, the system could provide a more adaptive, coherent, and immersive user experience.
+
+To investigate the feasibility of this application, it is essential to understand how existing multimodal learning frameworks establish relationships between different modalities, particularly vision and audio. This involves examining the mechanisms used to construct shared multimodal embedding spaces, the neural network architectures responsible for modality-specific feature extraction and representation alignment, and the training objectives that facilitate effective cross-modal learning. Furthermore, an understanding of the limitations and challenges associated with existing approaches is necessary to identify research gaps and determine the methodological requirements for developing an effective image-conditioned audio generation system.
+
+Based on these considerations, the following research questions are formulated to guide this review:
+
+\subsection{RQ1: How is a Shared Audio--Visual Multimodal Space Constructed?}
+
+This research question investigates the methodologies employed to extract, represent, and align visual and audio features within a common embedding space. Particular attention is given to modality-specific feature extraction, learnable projection mechanisms, and cross-modal similarity computation. Understanding these mechanisms is essential for establishing meaningful semantic relationships between visual scenes and their corresponding acoustic representations.
+
+\subsection{RQ2: What Training Objectives and Neural Network Architectures Are Employed for Multimodal Representation Learning?}
+
+This research question examines the architectural configurations and optimization strategies adopted by existing multimodal frameworks. It focuses on the different neural network backbones used for modality-specific feature extraction, the projection mechanisms employed to obtain shared representations, and the contrastive learning objectives used to align different modalities. The investigation aims to understand how these architectural and training components contribute to effective multimodal representation learning.
+
+\subsection{RQ3: What Are the Major Challenges and Limitations Associated with Existing Multimodal Architectures and Models?}
+
+This research question explores the limitations of existing multimodal learning approaches, particularly concerning cross-modal alignment, computational complexity, training data availability, modality-specific information loss, and generalization across different domains. It also examines the challenges associated with capturing complex relationships between visual scenes and their corresponding acoustic events. Identifying these limitations is essential for determining the research gaps and potential improvements required for future image-conditioned audio generation systems.
+
+Collectively, these research questions establish the foundation for investigating existing multimodal representation learning techniques and evaluating their applicability to image-conditioned audio generation. By examining shared embedding space construction, architectural and training strategies, and the limitations of current approaches, this review aims to identify the key methodological requirements for developing a context-aware system capable of generating semantically and acoustically appropriate audio from visual inputs.
+```
+
+\section{Challenges, Limitations, and Future Directions}\label{sec6}
+
+Despite their effectiveness in learning shared multimodal representations, CLIP, AudioCLIP, and CLAP exhibit several limitations related to computational requirements, training data quality, cross-modal alignment, and generalization capabilities. These limitations arise partly from the differences in their training objectives and the availability of paired multimodal datasets. This section examines the challenges associated with each framework and identifies potential directions for future research.
+
+\subsection{Challenges and Limitations of CLIP}
+
+Although CLIP demonstrates strong zero-shot transfer capabilities across a wide range of visual recognition tasks, its performance remains inconsistent across different evaluation settings.
+
+One of its primary limitations is the substantial computational requirement associated with scaling training to achieve state-of-the-art performance across vision benchmarks. The original study estimates that approximately a 1000-fold increase in computational resources would be required to achieve competitive performance across the evaluated benchmarks through zero-shot transfer.
+
+CLIP also exhibits weaknesses in fine-grained recognition and abstract reasoning tasks. It struggles to distinguish visually similar categories, such as specific aircraft variants, car models, and flower species. Furthermore, its performance deteriorates on systematic tasks such as object counting and on out-of-distribution datasets. For instance, its reported zero-shot accuracy on MNIST is approximately 88\%, which is lower than that of a simple logistic regression model trained on raw pixel values.
+
+Another limitation concerns the closed-set nature of zero-shot classification. Predictions are restricted to the text descriptions supplied as candidate prompts, making the framework less flexible than generative image captioning approaches. Additionally, ambiguous class descriptions can lead to incorrect associations because of polysemy, where a single word may represent multiple concepts.
+
+The transition from zero-shot classification to few-shot learning also presents challenges. Conventional linear probing does not always preserve the knowledge acquired during zero-shot pre-training, potentially resulting in reduced performance when only a limited number of labelled examples are available.
+
+Furthermore, training on large-scale web-scraped image--text datasets introduces societal biases related to gender, race, and occupational associations. The flexibility of constructing custom classifiers without retraining the model also introduces potential misuse in sensitive applications, including surveillance and facial recognition.
+
+\subsection{Challenges and Limitations of AudioCLIP}
+
+AudioCLIP extends visual--textual contrastive learning into a tri-modal framework; however, integrating audio representations introduces additional challenges, particularly concerning dataset availability and cross-modal supervision.
+
+A major limitation is the significant difference in dataset scale between visual--textual and audio training resources. While CLIP was trained using approximately 400 million image--text pairs, AudioCLIP relies on substantially smaller audio resources, including approximately two million AudioSet clips. This difference increases the risk of overfitting and necessitates extensive audio augmentation techniques, including additive white Gaussian noise and random cropping.
+
+Another challenge originates from the quality of cross-modal supervision. AudioSet primarily provides class labels and video-level metadata rather than detailed acoustic descriptions. Consequently, video titles and descriptions may represent the overall context of a video rather than the actual acoustic content of an individual audio segment. This discrepancy introduces noise into the audio--text alignment process.
+
+The joint fine-tuning of image, text, and audio encoders also introduces a modality-distribution trade-off. Updating the original CLIP representations using AudioSet video frames and class labels can alter the pretrained visual--textual embedding distribution, potentially reducing performance on independent vision benchmarks such as ImageNet.
+
+Additionally, the audio processing pipeline operates on fixed-duration audio segments, typically using 5--10 second crops, and relies on a 50-layer ESResNeXt architecture. These design choices limit the model's ability to capture long-duration acoustic dependencies and perform complex temporal audio reasoning.
+
+\subsection{Challenges and Limitations of CLAP}
+
+CLAP demonstrates strong performance in sound event classification and audio--text retrieval; however, its effectiveness varies considerably across different audio understanding tasks.
+
+A significant limitation is its relatively poor performance on speech-related tasks, including emotion recognition and keyword spotting. This limitation is primarily associated with the composition of its training datasets, which predominantly contain captions describing environmental sounds, physical events, and acoustic scenes. The limited representation of speech content, speaker characteristics, and emotional expressions restricts its ability to generalize to speech-oriented applications.
+
+Another important challenge concerns the quality of automatically collected training data. Incorporating approximately 1.7 million additional audio--text pairs derived from AudioSet video titles and tags unexpectedly degrades zero-shot performance. For example, the reported ESC-50 classification accuracy decreases from 82.6\% to 67.15\% after incorporating this noisy supervision. This indicates that increasing dataset size does not necessarily improve multimodal representation quality when the correspondence between audio and text is weak.
+
+CLAP is also sensitive to the formulation of textual prompts during zero-shot evaluation. Changes in prompt templates can produce approximately 5\% variation in ESC-50 classification accuracy, indicating that the model's predictions depend partly on the linguistic representation of candidate classes.
+
+Furthermore, the relationship between training batch size and model performance is not consistently positive. Although increasing batch size generally improves the number of negative samples available for contrastive learning, an unexpected performance reduction was observed when increasing the batch size from 256 to 768. This suggests that larger batches do not necessarily guarantee improved optimization or generalization.
+
+\subsection{Comparative Analysis of Challenges and Limitations}
+
+The limitations identified across the three frameworks can be categorized into computational constraints, data-related challenges, representation limitations, and generalization issues. Table~\ref{tab:limitations} summarizes the major challenges associated with each model.
+
+\begin{table*}[t]
+\caption{Comparative analysis of major challenges and limitations across CLIP, AudioCLIP, and CLAP.}
+\label{tab:limitations}
+\centering
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2.5cm}p{4.2cm}p{4.2cm}p{4.2cm}@{}}
+\toprule
+\textbf{Limitation Category} & \textbf{CLIP} & \textbf{AudioCLIP} & \textbf{CLAP} \\
+\midrule
+
+Computational Requirements
+&
+Requires substantial additional compute to achieve state-of-the-art zero-shot performance across vision benchmarks.
+&
+Requires multi-stage training and optimization of three modality-specific encoders.
+&
+Large-scale contrastive training requires substantial resources for audio and text representation learning.
+\\
+
+Data Availability and Quality
+&
+Relies on large-scale web-scraped image--text pairs, which may contain noisy associations.
+&
+Limited availability of paired audio--visual--text data increases overfitting risk.
+&
+Noisy metadata-based supervision can degrade performance despite increasing dataset size.
+\\
+
+Cross-Modal Alignment
+&
+Ambiguous text descriptions and polysemy can produce incorrect image--text associations.
+&
+Video-level metadata may not accurately describe the acoustic content of individual audio segments.
+&
+Weak correspondence between audio captions and acoustic events affects representation quality.
+\\
+
+Generalization
+&
+Weaknesses in fine-grained recognition, abstract reasoning, and out-of-distribution tasks.
+&
+Fine-tuning can alter pretrained visual--textual representations and reduce performance on vision benchmarks.
+&
+Poor transfer to speech-related tasks due to limited speech-oriented training descriptions.
+\\
+
+Task-Specific Limitations
+&
+Closed-set prompt-based classification and inconsistent few-shot adaptation.
+&
+Fixed-duration audio processing restricts long-form acoustic reasoning.
+&
+Sensitivity to prompt formulation and unexpected performance degradation at larger batch sizes.
+\\
+
+Bias and Safety
+&
+Inherits societal biases from web-scraped data and can be misused in sensitive classification and surveillance applications.
+&
+Performance and alignment depend on the quality and distribution of training data across modalities.
+&
+Training data composition limits coverage of speech, emotion, and other acoustic domains.
+\\
+\botrule
+\end{tabular*}
+\end{table*}
+
+The comparison reveals that although the three models share a contrastive learning foundation, their limitations differ according to the modalities they process. CLIP is primarily constrained by computational scalability, fine-grained visual understanding, and biases in web-derived training data. AudioCLIP faces additional difficulties arising from limited multimodal audio datasets and inconsistencies in video-level supervision. CLAP, in contrast, demonstrates that the quality and semantic relevance of audio descriptions are critical factors in determining cross-modal generalization.
+
+\subsection{Future Research Directions}
+
+The limitations identified across the three frameworks indicate several opportunities for improving multimodal representation learning. Future research should focus not only on increasing model capacity and dataset size but also on improving supervision quality, representation transfer, and robustness across different domains.
+
+\subsubsection{Improving Visual--Textual Representation Learning}
+
+For CLIP-like frameworks, one potential research direction involves combining contrastive and generative learning objectives. Such approaches could retain the efficient representation alignment of contrastive learning while incorporating the flexible language generation capabilities of image captioning models.
+
+Improving data and sample efficiency through self-supervised learning and self-training could also reduce dependence on extremely large image--text datasets. Additionally, integrating zero-shot predictions as prior knowledge during few-shot adaptation may improve performance when only a small number of labelled examples are available.
+
+Future evaluation should also incorporate benchmarks specifically designed for zero-shot transfer, fine-grained recognition, abstract reasoning, and out-of-distribution generalization. Standardized bias evaluation and mitigation frameworks are equally important for identifying potential societal risks before deployment.
+
+\subsubsection{Extending Tri-Modal Audio Representation Learning}
+
+For AudioCLIP, future research could investigate replacing conventional ResNet and ESResNeXt architectures with more recent transformer-based backbones, including Vision Transformers and Audio Spectrogram Transformers. These architectures may improve the extraction of complex spatial, temporal, and acoustic representations.
+
+Another important direction involves expanding the availability of high-quality paired audio--visual--text datasets. Rich acoustic descriptions could improve correspondence between individual audio segments and their associated visual and textual information.
+
+Furthermore, evaluation across a broader range of audio classification, multimodal retrieval, and cross-modal transfer benchmarks would provide a more comprehensive understanding of the model's generalization capabilities.
+
+\subsubsection{Advancing General-Purpose Audio--Language Models}
+
+For CLAP-like frameworks, a major research direction involves developing speech-focused audio captioning datasets containing detailed descriptions of spoken content, speaker characteristics, and emotional states. Such datasets could improve transfer to speech emotion recognition, keyword spotting, and other speech-oriented tasks.
+
+Automated acoustic description generation is another promising direction. Intelligent audio captioning systems could generate more accurate descriptions of large-scale audio datasets, including AudioSet, thereby reducing the dependence on weak video metadata and manually assigned class labels.
+
+Finally, further investigation into contrastive training configurations, including larger batch sizes, alternative optimization strategies, and more powerful audio and language encoders, could help establish more general-purpose audio foundation models.
+
+\subsection{Summary of Future Research Opportunities}
+
+Table~\ref{tab:future} presents the major research directions identified from the limitations of the three frameworks.
+
+\begin{table*}[t]
+\caption{Potential future research directions for improving contrastive multimodal representation learning.}
+\label{tab:future}
+\centering
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2.5cm}p{5.1cm}p{7.5cm}@{}}
+\toprule
+\textbf{Model} & \textbf{Identified Research Direction} & \textbf{Potential Research Objective} \\
+\midrule
+
+CLIP
+&
+Hybrid contrastive--generative learning
+&
+Combine discriminative multimodal alignment with open-ended image and text generation capabilities.
+\\
+
+CLIP
+&
+Data and sample efficiency
+&
+Integrate self-supervised learning and self-training to reduce dependence on extremely large labelled datasets.
+\\
+
+CLIP
+&
+Few-shot adaptation
+&
+Incorporate zero-shot predictions as prior knowledge to improve learning from limited labelled examples.
+\\
+
+CLIP
+&
+Robustness and bias mitigation
+&
+Develop dedicated zero-shot evaluation benchmarks and standardized bias detection and mitigation techniques.
+\\
+
+AudioCLIP
+&
+Advanced encoder architectures
+&
+Investigate transformer-based visual and audio backbones to improve multimodal feature extraction.
+\\
+
+AudioCLIP
+&
+High-quality multimodal datasets
+&
+Develop richer audio--visual--text annotations to improve alignment between individual acoustic events and their corresponding descriptions.
+\\
+
+AudioCLIP
+&
+Broader evaluation
+&
+Evaluate cross-modal retrieval, audio classification, and generalization across diverse downstream benchmarks.
+\\
+
+CLAP
+&
+Speech-oriented supervision
+&
+Introduce speech descriptions, speaker characteristics, and emotional annotations to improve speech-related task performance.
+\\
+
+CLAP
+&
+Automated acoustic captioning
+&
+Generate accurate acoustic descriptions for large-scale datasets to reduce noisy metadata-based supervision.
+\\
+
+CLAP
+&
+Training and architecture scaling
+&
+Investigate alternative batch sizes, optimization strategies, and larger audio and language encoders for general-purpose audio understanding.
+\\
+
+\botrule
+\end{tabular*}
+\end{table*}
+
+Overall, the future development of contrastive multimodal models requires a shift from scaling model parameters and training datasets alone toward improving the quality of cross-modal supervision and the robustness of learned representations. The challenges identified across CLIP, AudioCLIP, and CLAP demonstrate that effective multimodal learning depends not only on the alignment mechanism but also on the semantic relevance, diversity, and reliability of the underlying training data.
+
+
+% \section{Discussion}\label{sec12}
+
+% Discussions should be brief and focused. In some disciplines use of Discussion or `Conclusion' is interchangeable. It is not mandatory to use both. Some journals prefer a section `Results and Discussion' followed by a section `Conclusion'. Please refer to Journal-level guidance for any specific requirements. 
+
+
+\section{Conclusion}\label{sec8}
+
+This review investigated multimodal representation learning approaches, focusing on CLIP, AudioCLIP, and CLAP, to understand the foundations of establishing semantic relationships across visual, textual, and audio modalities. The study examined how these models construct shared embedding spaces using modality-specific encoders, projection layers, and contrastive learning objectives. It also discussed the different neural network architectures and training strategies employed by these models, highlighting the role of paired multimodal datasets in learning meaningful cross-modal representations.
+
+The comparative analysis identified several challenges and limitations, including high computational requirements, limited availability of high-quality multimodal datasets, noisy cross-modal supervision, domain generalization, and sensitivity to training configurations. Although the reviewed models demonstrate effective multimodal alignment and retrieval capabilities, they primarily focus on representation learning rather than generating audio directly from visual inputs. This highlights the gap between understanding relationships across modalities and producing acoustically appropriate audio conditioned on visual scenes.
+
+Overall, the findings establish that shared multimodal representation learning provides an important foundation for developing image-conditioned audio generation systems. However, achieving this objective requires an additional generative framework capable of translating visual scene information into contextually relevant audio. Future work can explore the integration of visual scene understanding, audio--visual semantic alignment, and conditional audio synthesis to develop systems that generate dynamic and realistic soundscapes. Such systems could reduce dependence on manually designed audio assets and support more immersive experiences in gaming, virtual environments, and interactive simulations.
+
+
+\section*{Declarations}
+
+Some journals require declarations to be submitted in a standardised format. Please check the Instructions for Authors of the journal to which you are submitting to see if you need to complete this section. If yes, your manuscript must contain the following sections under the heading `Declarations':
+
+\begin{itemize}
+\item Funding
+\item Conflict of interest/Competing interests (check journal-specific guidelines for which heading to use)
+\item Ethics approval and consent to participate
+\item Consent for publication
+\item Data availability 
+\item Materials availability
+\item Code availability 
+\item Author contribution
+\end{itemize}
+
+\noindent
+If any of the sections are not relevant to your manuscript, please include the heading and write `Not applicable' for that section. 
+
+%%===================================================%%
+%% For presentation purpose, we have included        %%
+%% \bigskip command. Please ignore this.             %%
+%%===================================================%%
+\bigskip
+\begin{flushleft}%
+Editorial Policies for:
+
+\bigskip\noindent
+Springer journals and proceedings: \url{https://www.springer.com/gp/editorial-policies}
+
+\bigskip\noindent
+Nature Portfolio journals: \url{https://www.nature.com/nature-research/editorial-policies}
+
+\bigskip\noindent
+\textit{Scientific Reports}: \url{https://www.nature.com/srep/journal-policies/editorial-policies}
+
+\bigskip\noindent
+BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies}
+\end{flushleft}
+
+\begin{appendices}
+
+\section{Section title of first appendix}\label{secA1}
+
+An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+
+%%=============================================%%
+%% For submissions to Nature Portfolio Journals %%
+%% please use the heading ``Extended Data''.   %%
+%%=============================================%%
+
+%%=============================================================%%
+%% Sample for another appendix section			       %%
+%%=============================================================%%
+
+%% \section{Example of another appendix section}\label{secA2}%
+%% Appendices may be used for helpful, supporting or essential material that would otherwise 
+%% clutter, break up or be distracting to the text. Appendices can consist of sections, figures, 
+%% tables and equations etc.
+
+\end{appendices}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+\bibliography{sn-bibliography}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+\end{document}
